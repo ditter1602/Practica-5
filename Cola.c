@@ -21,7 +21,7 @@ void encolar(Cola *c, int x) {
     }
 }
 
-int desencolar(Cola *c) {
+    int desencolar(Cola *c) {
     if (isEmpty2(*c)) {
         printf("Error: La cola está vacía.\n");
         return -1; 
@@ -42,4 +42,34 @@ int first(Cola c) {
         printf("Error: La cola está vacía.\n");
         return -1;
     }
+}
+
+void printCola(Cola cola){
+    if(isEmpty2(cola)){
+        printf("error, cola vacía");
+        return;
+    }else{
+        for(int i = 0; i < cola.ultimo + 1; i++){
+            printf("elemento %d: %d\n", i+1, cola.lista[i]);
+        }
+    }
+}
+
+void buscarenCola(Cola cola, int valor){
+    int found = 0;
+
+    for(int i = 0; i < cola.ultimo + 1; i++){
+        if (valor == cola.lista[i])
+        {
+            found = 1;
+            printf("%d está en la posición %d de la cola\n", valor, i+1);
+            return;
+        }
+    }
+    if (found == 0)
+    {
+        printf("no se pudo encontrar\n");
+        return;
+    }
+    
 }

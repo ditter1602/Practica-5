@@ -13,5 +13,7 @@ int isEmpty(Pila);
 void push(Pila*, int);
 int pop(Pila*);
 int top(Pila);
+void printPila(Pila);
+void buscarenPila(Pila, int);
 
 #endif 

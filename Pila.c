@@ -40,3 +40,30 @@ int top(Pila pila) {
     }
 }
 
+void printPila(Pila pila){
+    if(isEmpty(pila)){
+        printf("la pila esta vacia");
+        return;
+    }else{
+        for(int i = 0; i < pila.tope; i++){
+            printf("elemento %d: %d\n", i+1, pila.lista[i]);
+        }
+    }
+}
+void buscarenPila(Pila pila, int valor){
+    int encontrado = 0;
+    
+    for(int i = 0; i < pila.tope; i++){
+        if(valor == pila.lista[i]){
+            encontrado = 1;
+            printf("%d está en la posición %d de la pila\n",valor, i+1);
+            return;
+        }
+    }
+
+    if (encontrado == 0)
+    {
+        printf("valor no encontrado ;(\n");
+        return;
+    }
+}
