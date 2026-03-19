@@ -50,6 +50,7 @@ void printPila(Pila pila){
         }
     }
 }
+
 void buscarenPila(Pila pila, int valor){
     int encontrado = 0;
     

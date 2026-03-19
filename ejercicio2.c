@@ -2,9 +2,7 @@
 #include "Pila.h"
 #include "Cola.h"
 
-
-
-void printMenuPila(Pila p){
+void printMenuPila(Pila *p){
     int op;
     printf("elige una opción [1-4]\n");
     printf("1. push\n");
@@ -18,24 +16,26 @@ void printMenuPila(Pila p){
         int v;
         printf("que valor vas a meter?\n");
         scanf("%d", &v);
-        push(&p, v);
+        push(p, v);
         break;
     case 2:
-        printf("pop = %d\n", pop(&p));
+        printf("pop = %d\n", pop(p));
         break;
     case 3:
         int valor;
         printf("que valor quieres buscar?\n");
-        break;
+        scanf("%d", &valor);
+        buscarenPila(*p, valor);
+        break; 
     case 4:
-        /* code */
+        printPila(*p);
         break;
     default:
         break;
     }
 }
 
-void printMenuCola(Cola c){
+void printMenuCola(Cola *c){
     int op;
     printf("elige una opción [1-4]\n");
     printf("1. encolar\n");
@@ -46,16 +46,22 @@ void printMenuCola(Cola c){
     switch (op)
     {
     case 1:
-        /* code */
+        int x;
+        printf("ingresa el valor a encolar\n");
+        scanf("%d", &x);
+        encolar(c, x);
         break;
     case 2:
-        /* code */
+        printf("el primero en la cola es %d\n", desencolar(c));
         break;
     case 3:
-        /* code */
+        int y;
+        printf("que valor quieres buscar?\n");
+        scanf("%d", &y);
+        buscarenCola(*c, y);
         break;
     case 4:
-        /* code */
+        printCola(*c);
         break;
     default:
         break;
@@ -66,19 +72,28 @@ int main(){
     int op;
     Pila pila = crearPila();
     Cola cola = crearCola();
-    printf("\nelige una opcion [1 o 2]\n");
-    printf("1. pila\n");
-    printf("2. cola\n");
-    scanf("%d", &op);
-    switch (op)
+    char continua = 'y';
+
+    do
     {
-    case 1:
-        printMenuPila(pila);
-        break;
-    case 2:
-        printMenuCola(cola);
-        break;
-    default:
-        break;
+        printf("\nelige una opcion [1 o 2]\n");
+        printf("1. pila\n");
+        printf("2. cola\n");
+        scanf("%d", &op);
+        switch (op)
+        {
+        case 1:
+            printMenuPila(&pila);
+            break;
+        case 2:
+            printMenuCola(&cola);
+            break;
+        default:
+            break;
+        }
+        printf("quieres seguir?\n");
+        scanf(" %c", &continua);
     }
+    while(continua == 'y');
+    return 0;
 }

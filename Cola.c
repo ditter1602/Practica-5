@@ -21,7 +21,7 @@ void encolar(Cola *c, int x) {
     }
 }
 
-    int desencolar(Cola *c) {
+int desencolar(Cola *c) {
     if (isEmpty2(*c)) {
         printf("Error: La cola está vacía.\n");
         return -1; 
@@ -49,8 +49,8 @@ void printCola(Cola cola){
         printf("error, cola vacía");
         return;
     }else{
-        for(int i = 0; i < cola.ultimo + 1; i++){
-            printf("elemento %d: %d\n", i+1, cola.lista[i]);
+        for(int i = cola.primero; i < cola.ultimo + 1; i++){
+            printf("elemento %d: %d\n", i+1-cola.primero, cola.lista[i]);
         }
     }
 }
